@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DbFunctions {
-    public Connection connectToDB(String dbname, String user, String pass){
+    public Connection connectToDB(String user, String pass){
         Connection conn=null;
         try {
             Class.forName("org.postgresql.Driver");
-            conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/"+dbname,
+            conn= DriverManager.getConnection("jdbc:postgresql://localhost:5432/autoworkshop",
                     user, pass);
             if(conn!=null){
                 System.out.println("Connection Established");
@@ -66,6 +66,8 @@ public class DbFunctions {
             System.out.println(e);
         }
     }
+
+
 
     public void updateName(Connection conn, String tableName, String oldName, String newName){
         Statement statement;
